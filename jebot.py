@@ -7,8 +7,6 @@ from youtube_dl import YoutubeDL
 from opencc import OpenCC
 from config import Config
 
-CHANNEL_FORWARD_TO = -1001466248870
-
 Jebot = Client(
    "YT Downloader",
    api_id=Config.APP_ID,
@@ -227,21 +225,8 @@ async def send_video(message: Message, info_dict, video_file):
     await message.reply_video(
         video_file, caption=caption, duration=duration,
         width=width, height=height, parse_mode='HTML',
-        thumb=thumbnail_file,
-        reply_markup=InlineKeyboardMarkup(
-            [
-                [
-                    InlineKeyboardButton(
-                        "Save ✅",
-                        callback_data="forward_video"
-                    ),
-                    InlineKeyboardButton(
-                        "Channel 🇱🇰",
-                        url="https://t.me/Infinity_BOTs"
-                    )
-                ]
-            ]
-        ))
+        thumb=thumbnail_file)
+
     os.remove(video_file)
     os.remove(thumbnail_file)
 
@@ -274,14 +259,6 @@ def get_resolution(info_dict):
         height = 240
     return (width, height)
 
-
-@Jebot.on_callback_query(filters.regex("^forward_video$"))
-async def callback_query_forward_video(_, callback_query):
-    m_edited = await callback_query.message.edit_reply_markup(None)
-    m_cp = await m_edited.copy(CHANNEL_FORWARD_TO,
-                               disable_notification=True)
-    await callback_query.answer("Saved!")
-    await m_edited.reply(m_cp.link, quote=True)
 
 @Jebot.on_callback_query()
 async def button(bot, update):
