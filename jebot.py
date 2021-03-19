@@ -170,7 +170,7 @@ async def send_audio(message: Message, info_dict, audio_file):
     # info (s2tw)
     webpage_url = info_dict['webpage_url']
     title = '@Infinity_BOTs '+s2tw(info_dict['title'])
-    caption = f"<b><a href=\"{webpage_url}\">{title}</a></b>"
+    caption = f"<b><a href=\"{webpage_url}\">{title}</a>\n\n~ @JEAnyDLBot</b>"
     duration = int(float(info_dict['duration']))
     performer = s2tw(info_dict['uploader'])
     await message.reply_audio(audio_file, caption=caption, duration=duration,
@@ -220,8 +220,8 @@ async def send_video(message: Message, info_dict, video_file):
         get_file_extension_from_url(thumbnail_url)
     # info (s2tw)
     webpage_url = info_dict['webpage_url']
-    title = s2tw(info_dict['title'])
-    caption = f"<b><a href=\"{webpage_url}\">{title}</a></b>"
+    title = '@Infinity_BOTs - '+s2tw(info_dict['title'])
+    caption = f"<b><a href=\"{webpage_url}\">{title}</a>\n\n~ @JEAnyDLBot</b>"
     duration = int(float(info_dict['duration']))
     width, height = get_resolution(info_dict)
     await message.reply_video(
