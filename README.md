@@ -8,6 +8,8 @@
 
 ### Credits:
 
+[Dashezup](https://github.com/dashezup) 'Author'
+
 [Infinity BOTs](https://t.me/Infinity_BOTs)
 
 [Pyrogram Library](https://github.com/pyrogram/pyrogram)
