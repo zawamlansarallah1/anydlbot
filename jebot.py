@@ -216,7 +216,7 @@ if Config.THUMBNAIL == "No":
       thumbnail_url = info_dict['thumbnail']
       thumbnail_file = basename + "." + \
 
-      get_file_extension_from_url(thumbnail_url)
+          get_file_extension_from_url(thumbnail_url)
       # info (s2tw)
       webpage_url = info_dict['webpage_url']
       title = '@Infinity_BOTs - '+s2tw(info_dict['title'])
