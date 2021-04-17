@@ -6,6 +6,7 @@ from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 from youtube_dl import YoutubeDL
 from opencc import OpenCC
 from config import Config
+import wget
 
 Jebot = Client(
    "YT Downloader",
@@ -13,8 +14,6 @@ Jebot = Client(
    api_hash=Config.API_HASH,
    bot_token=Config.TG_BOT_TOKEN,
 )
-
-os.system("wget https://telegra.ph/file/7425967719f07e5512df5.jpg")
 
 YTDL_REGEX = (r"^((?:https?:)?\/\/)"
               r"?((?:www|m)\.)"
@@ -236,8 +235,10 @@ else:
     async def send_video(message: Message, info_dict, video_file):
       basename = video_file.rsplit(".", 1)[-2]
       # thumbnail
-      thumbnail_file = "7425967719f07e5512df5.jpg"
-
+      lel = "https://telegra.ph/file/7425967719f07e5512df5.jpg"
+      sed = await wget.download(lel)
+      thumbnail_file = sed
+      
       # info (s2tw)
       webpage_url = info_dict['webpage_url']
       title = '@Infinity_BOTs - '+s2tw(info_dict['title'])
