@@ -242,7 +242,7 @@ if Config.VIDEO_THUMBNAIL == "No":
           get_file_extension_from_url(thumbnail_url)
       # info (s2tw)
       webpage_url = info_dict['webpage_url']
-      title = '@Infinity_BOTs - '+s2tw(info_dict['title'])
+      title = s2tw(info_dict['title'])
       caption = f"<b><a href=\"{webpage_url}\">{title}</a></b>"
       duration = int(float(info_dict['duration']))
       width, height = get_resolution(info_dict)
@@ -263,7 +263,7 @@ else:
       
       # info (s2tw)
       webpage_url = info_dict['webpage_url']
-      title = '@Infinity_BOTs - '+s2tw(info_dict['title'])
+      title = s2tw(info_dict['title'])
       caption = f"<b><a href=\"{webpage_url}\">{title}</a></b>"
       duration = int(float(info_dict['duration']))
       width, height = get_resolution(info_dict)
