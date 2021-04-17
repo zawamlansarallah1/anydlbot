@@ -209,32 +209,47 @@ async def callback_query_ytdl_video(_, callback_query):
     await callback_query.message.reply_to_message.delete()
     await callback_query.message.delete()
 
+if Config.THUMBNAIL == "No":
+   async def send_video(message: Message, info_dict, video_file):
+      basename = video_file.rsplit(".", 1)[-2]
+      # thumbnail
+      thumbnail_url = info_dict['thumbnail']
+      thumbnail_file = basename + "." + \
 
-async def send_video(message: Message, info_dict, video_file):
-    basename = video_file.rsplit(".", 1)[-2]
-    # thumbnail
-    thumbnail_url = info_dict['thumbnail']
- if Config.THUMBNAIL is None:
-    thumbnail_file = basename + "." + \
- else:
-    thumbnail_file = "https://telegra.ph/file/db6f32d2b26d3db40dfcd.jpg" 
- break
-    get_file_extension_from_url(thumbnail_url)
-    # info (s2tw)
-    webpage_url = info_dict['webpage_url']
-    title = '@Infinity_BOTs - '+s2tw(info_dict['title'])
-    caption = f"<b><a href=\"{webpage_url}\">{title}</a></b>"
-    duration = int(float(info_dict['duration']))
-    width, height = get_resolution(info_dict)
-    await message.reply_video(
-        video_file, caption=caption, duration=duration,
-        width=width, height=height, parse_mode='HTML',
-        thumb=thumbnail_file)
+      get_file_extension_from_url(thumbnail_url)
+      # info (s2tw)
+      webpage_url = info_dict['webpage_url']
+      title = '@Infinity_BOTs - '+s2tw(info_dict['title'])
+      caption = f"<b><a href=\"{webpage_url}\">{title}</a></b>"
+      duration = int(float(info_dict['duration']))
+      width, height = get_resolution(info_dict)
+      await message.reply_video(
+          video_file, caption=caption, duration=duration,
+          width=width, height=height, parse_mode='HTML',
+          thumb=thumbnail_file)
 
-    os.remove(video_file)
-    os.remove(thumbnail_file)
+      os.remove(video_file)
+      os.remove(thumbnail_file)
 
+else:
+    async def send_video(message: Message, info_dict, video_file):
+      basename = video_file.rsplit(".", 1)[-2]
+      # thumbnail
+      thumbnail_file = "https://telegra.ph/file/db6f32d2b26d3db40dfcd.jpg"
 
+      # info (s2tw)
+      webpage_url = info_dict['webpage_url']
+      title = '@Infinity_BOTs - '+s2tw(info_dict['title'])
+      caption = f"<b><a href=\"{webpage_url}\">{title}</a></b>"
+      duration = int(float(info_dict['duration']))
+      width, height = get_resolution(info_dict)
+      await message.reply_video(
+          video_file, caption=caption, duration=duration,
+          width=width, height=height, parse_mode='HTML',
+          thumb=thumbnail_file)
+
+      os.remove(video_file)
+   
 def get_file_extension_from_url(url):
     url_path = urlparse(url).path
     basename = os.path.basename(url_path)
