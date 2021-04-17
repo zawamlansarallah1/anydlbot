@@ -155,29 +155,52 @@ async def callback_query_ytdl_audio(_, callback_query):
     await callback_query.message.delete()
 
 
-async def send_audio(message: Message, info_dict, audio_file):
-    basename = audio_file.rsplit(".", 1)[-2]
-    # .webm -> .weba
-    if info_dict['ext'] == 'webm':
-        audio_file_weba = basename + ".weba"
-        os.rename(audio_file, audio_file_weba)
-        audio_file = audio_file_weba
-    # thumbnail
-    thumbnail_url = info_dict['thumbnail']
-    thumbnail_file = basename + "." + \
-        get_file_extension_from_url(thumbnail_url)
-    # info (s2tw)
-    webpage_url = info_dict['webpage_url']
-    title = '@Infinity_BOTs - '+s2tw(info_dict['title'])
-    caption = f"<b><a href=\"{webpage_url}\">{title}</a></b>"
-    duration = int(float(info_dict['duration']))
-    performer = s2tw(info_dict['uploader'])
-    await message.reply_audio(audio_file, caption=caption, duration=duration,
+if Config.AUDIO_THUMBNAIL == "No":
+   async def send_audio(message: Message, info_dict, audio_file):
+       basename = audio_file.rsplit(".", 1)[-2]
+       # .webm -> .weba
+       if info_dict['ext'] == 'webm':
+           audio_file_weba = basename + ".weba"
+           os.rename(audio_file, audio_file_weba)
+           audio_file = audio_file_weba
+       # thumbnail
+       thumbnail_url = info_dict['thumbnail']
+       thumbnail_file = basename + "." + \
+           get_file_extension_from_url(thumbnail_url)
+       # info (s2tw)
+       webpage_url = info_dict['webpage_url']
+       title = s2tw(info_dict['title'])
+       caption = f"<b><a href=\"{webpage_url}\">{title}</a></b>"
+       duration = int(float(info_dict['duration']))
+       performer = s2tw(info_dict['uploader'])
+       await message.reply_audio(audio_file, caption=caption, duration=duration,
                               performer=performer, title=title,
                               parse_mode='HTML', thumb=thumbnail_file)
-    os.remove(audio_file)
-    os.remove(thumbnail_file)
+        os.remove(audio_file)
+        os.remove(thumbnail_file)
 
+else:
+    async def send_audio(message: Message, info_dict, audio_file):
+       basename = audio_file.rsplit(".", 1)[-2]
+       # .webm -> .weba
+       if info_dict['ext'] == 'webm':
+           audio_file_weba = basename + ".weba"
+           os.rename(audio_file, audio_file_weba)
+           audio_file = audio_file_weba
+       # thumbnail
+       lol = Config.AUDIO_THUMBNAIL
+       thumbnail_file = wget.download(lol)
+       # info (s2tw)
+       webpage_url = info_dict['webpage_url']
+       title = s2tw(info_dict['title'])
+       caption = f"<b><a href=\"{webpage_url}\">{title}</a></b>"
+       duration = int(float(info_dict['duration']))
+       performer = s2tw(info_dict['uploader'])
+       await message.reply_audio(audio_file, caption=caption, duration=duration,
+                              performer=performer, title=title,
+                              parse_mode='HTML', thumb=thumbnail_file)
+       os.remove(audio_file)
+       os.remove(thumbnail_file)
 
 @Jebot.on_callback_query(filters.regex("^ytdl_video$"))
 async def callback_query_ytdl_video(_, callback_query):
@@ -210,7 +233,7 @@ async def callback_query_ytdl_video(_, callback_query):
     await callback_query.message.reply_to_message.delete()
     await callback_query.message.delete()
 
-if Config.THUMBNAIL is None:
+if Config.VIDEO_THUMBNAIL == "No":
    async def send_video(message: Message, info_dict, video_file):
       basename = video_file.rsplit(".", 1)[-2]
       # thumbnail
@@ -235,7 +258,7 @@ else:
     async def send_video(message: Message, info_dict, video_file):
       basename = video_file.rsplit(".", 1)[-2]
       # thumbnail
-      lel = Config.THUMBNAIL
+      lel = Config.VIDEO_THUMBNAIL
       thumbnail_file = wget.download(lel)
       
       # info (s2tw)
@@ -250,7 +273,8 @@ else:
           thumb=thumbnail_file)
 
       os.remove(video_file)
-   
+      os.remove(thumbnail_file)
+
 def get_file_extension_from_url(url):
     url_path = urlparse(url).path
     basename = os.path.basename(url_path)
