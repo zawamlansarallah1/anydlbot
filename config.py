@@ -8,4 +8,6 @@ class Config(object):
 
     API_HASH = os.environ.get("API_HASH", "")
 
-    THUMBNAIL = os.environ.get("THUMBNAIL", "")
+    AUDIO_THUMBNAIL = os.environ.get("AUDIO_THUMBNAIL", "")
+
+    VIDEO_THUMBNAIL = os.environ.get("VIDEO_THUMBNAIL", "")
