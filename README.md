@@ -8,7 +8,7 @@
 
 ### Credits:
 
-[Dashezup](https://github.com/dashezup) 'Author'
+[Dashezup](https://github.com/dashezup) 'Author of base repo'
 
 [Infinity BOTs](https://t.me/Infinity_BOTs)
 
