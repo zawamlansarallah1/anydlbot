@@ -4,3 +4,4 @@ Pyrogram
 TgCrypto
 ffmpeg-python
 youtube-dl
+wget
