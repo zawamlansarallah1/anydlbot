@@ -176,8 +176,8 @@ if Config.AUDIO_THUMBNAIL == "No":
        await message.reply_audio(audio_file, caption=caption, duration=duration,
                               performer=performer, title=title,
                               parse_mode='HTML', thumb=thumbnail_file)
-        os.remove(audio_file)
-        os.remove(thumbnail_file)
+       os.remove(audio_file)
+       os.remove(thumbnail_file)
 
 else:
     async def send_audio(message: Message, info_dict, audio_file):
