@@ -23,6 +23,14 @@
         "APP_ID": {
             "description": "Your APP ID from my.telegram.org",
             "value": ""
+        },
+        "AUDIO_THUMBNAIL": {
+            "description": "If you need to use custom thumbnail for audio files, get telegraph url of your thumbnail using @JETelegraphBot and put here. If not keep No",
+            "value": "No"
+        },
+        "VIDEO_THUMBNAIL": {
+            "description": "If you need to use custom thumbnail for video files, get telegraph url of your thumbnail using @JETelegraphBot and put it here. If not keep No",
+            "value": "No"
         }
     },
     "addons": [],
