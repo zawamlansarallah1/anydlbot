@@ -236,8 +236,7 @@ else:
       basename = video_file.rsplit(".", 1)[-2]
       # thumbnail
       lel = "https://telegra.ph/file/7425967719f07e5512df5.jpg"
-      sed = await wget.download(lel)
-      thumbnail_file = sed
+      thumbnail_file = await wget.download(lel)
       
       # info (s2tw)
       webpage_url = info_dict['webpage_url']
