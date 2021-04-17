@@ -214,7 +214,10 @@ async def send_video(message: Message, info_dict, video_file):
     basename = video_file.rsplit(".", 1)[-2]
     # thumbnail
     thumbnail_url = info_dict['thumbnail']
-    thumbnail_file = basename + "." + \
+    if Config.THUMBNAIL is None:
+       thumbnail_file = basename + "." + \
+    else: #test
+       thumbnail_file = "https://telegra.ph/file/db6f32d2b26d3db40dfcd.jpg"  
         get_file_extension_from_url(thumbnail_url)
     # info (s2tw)
     webpage_url = info_dict['webpage_url']
