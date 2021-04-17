@@ -14,6 +14,8 @@ Jebot = Client(
    bot_token=Config.TG_BOT_TOKEN,
 )
 
+os.system("wget https://telegra.ph/file/7425967719f07e5512df5.jpg")
+
 YTDL_REGEX = (r"^((?:https?:)?\/\/)"
               r"?((?:www|m)\.)"
               r"?((?:youtube\.com|youtu\.be|xvideos\.com|pornhub\.com"
@@ -234,7 +236,7 @@ else:
     async def send_video(message: Message, info_dict, video_file):
       basename = video_file.rsplit(".", 1)[-2]
       # thumbnail
-      thumbnail_file = "https://telegra.ph/file/db6f32d2b26d3db40dfcd.jpg"
+      thumbnail_file = "7425967719f07e5512df5.jpg"
 
       # info (s2tw)
       webpage_url = info_dict['webpage_url']
