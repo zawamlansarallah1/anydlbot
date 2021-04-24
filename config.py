@@ -11,3 +11,5 @@ class Config(object):
     AUDIO_THUMBNAIL = os.environ.get("AUDIO_THUMBNAIL", "")
 
     VIDEO_THUMBNAIL = os.environ.get("VIDEO_THUMBNAIL", "")
+
+    UPDATES_CHANNEL = os.environ.get("UPDATES_CHANNEL", None)
