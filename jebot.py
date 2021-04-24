@@ -57,7 +57,7 @@ async def help(client, message):
 
 Just send a Youtube url to download it in video or audio format!
 
-~ @Infinity_BOTs</b>""",
+Join @Infinity_BOTs</b>""",
         reply_markup=InlineKeyboardMarkup(
                                 [[
                                         InlineKeyboardButton(
@@ -85,7 +85,7 @@ async def about(client, message):
 
 <b>♞ Library:</b> <a href="https://github.com/pyrogram/pyrogram">Pyrogram</a>
 
-<b>~ @Infinity_BOTs</b>""",
+<b>Join @Infinity_BOTs</b>""",
      reply_markup=InlineKeyboardMarkup(
                                 [[
                                         InlineKeyboardButton(
