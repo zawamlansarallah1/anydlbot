@@ -10,7 +10,7 @@ from config import Config
 import wget
 
 Jebot = Client(
-   "YT Downloader",
+   "AnyDL Bot",
    api_id=Config.APP_ID,
    api_hash=Config.API_HASH,
    bot_token=Config.TG_BOT_TOKEN,
@@ -31,7 +31,7 @@ async def start(client, message):
                chat_id=message.chat.id,
                text="""<b>Hey There, I'm AnyDL Bot
 
-I can download video or audio from Youtube. Made by @ImJanindu 🇱🇰
+I can download video or audio from Youtube, Pornhub and Xhamster. Made by @JEBotZ.
 
 Hit help button to find out more about how to use me</b>""",   
                             reply_markup=InlineKeyboardMarkup(
@@ -55,7 +55,7 @@ async def help(client, message):
                chat_id=message.chat.id,
                text="""<b>AnyDL Bot Help!
 
-Just send a Youtube url to download it in video or audio format!
+Just send a Youtube, Pornhub or Xhamster video url to download it in video or audio format!
 
 Join @Infinity_BOTs</b>""",
         reply_markup=InlineKeyboardMarkup(
@@ -79,7 +79,7 @@ async def about(client, message):
                chat_id=message.chat.id,
                text="""<b>About AnyDL Bot!</b>
 
-<b>♞ Developer:</b> <a href="https://t.me/ImJanindu">Janindu 🇱🇰</a>
+<b>♞ Developer:</b> <a href="https://t.me/ImJanindu">Jason</a>
 
 <b>♞ Support:</b> <a href="https://t.me/InfinityBOTs_Support">Infinity BOTs Support</a>
 
