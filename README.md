@@ -8,7 +8,7 @@ This bot can download video or audio from youtube and more video sites quickly (
 
 ### Credits:
 
-- [Dashezup](https://github.com/dashezup) - Author of base repo
+- [Dashezup](https://github.com/dashezup) - Author of base plugin
 
 - [Infinity BOTs](https://t.me/Infinity_BOTs)
 
